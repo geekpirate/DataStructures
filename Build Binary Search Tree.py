@@ -20,7 +20,18 @@ class Solution:
 
     # iterative
     def inorderIter(self, root: Node):
-        pass
+        out = []
+        stack = [root]
+        while stack:
+            curr = stack.pop()
+            if type(curr) is int:
+                out.append(curr)
+                continue
+            if curr is not None:
+                stack.append(curr.right)
+                stack.append(curr.val)
+                stack.append(curr.left)
+        return out
 
 
 s = Solution()
@@ -35,3 +46,4 @@ root = s.add(root, 80)
 
 print(s.inorder(root))
 
+print(s.inorderIter(root))
